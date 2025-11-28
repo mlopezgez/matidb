@@ -1,0 +1,16 @@
+[package]
+name = "matidb"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "matidb"
+path = "src/main.rs"
+
+[[bin]]
+name = "matidb-client"
+path = "src/bin/matidb-client.rs"
+
+[dependencies]
+rustyline = "14"
+sqlparser = "0.59.0"
