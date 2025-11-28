@@ -191,15 +191,6 @@ Run the test suite:
 cargo test
 ```
 
-Test the TCP functionality with the Python test script:
-
-```bash
-# Terminal 1: Start server
-./target/release/matidb --server 127.0.0.1:5432 test.db
-
-# Terminal 2: Run test
-python3 test_tcp.py
-```
 
 ## Architecture Notes
 
