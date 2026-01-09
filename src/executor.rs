@@ -79,7 +79,7 @@ fn handle_insert(
     for row_exprs in rows {
         let values: Vec<Value> = row_exprs
             .into_iter()
-            .map(|expr| expr_to_value(expr))
+            .map(expr_to_value)
             .collect::<Result<Vec<_>, _>>()?;
 
         let row = Row { values };
@@ -239,7 +239,7 @@ fn handle_query(db: &Database, query: sqlparser::ast::Query) -> Result<String, S
                 match Row::from_bytes(&bytes) {
                     Ok(row) => {
                         let formatted: Vec<String> =
-                            row.values.iter().map(|v| format_value(v)).collect();
+                            row.values.iter().map(format_value).collect();
                         output.push_str(&formatted.join("\t"));
                         output.push('\n');
                         row_count += 1;

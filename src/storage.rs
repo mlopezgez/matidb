@@ -20,6 +20,12 @@ impl Page {
     }
 }
 
+impl Default for Page {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 pub struct DiskManager {
     file: File,
     next_page_id: PageId,
@@ -32,6 +38,7 @@ impl DiskManager {
             .read(true)
             .write(true)
             .create(true)
+            .truncate(false)
             .open(path)?;
 
         // Calculate next_page_id from file length

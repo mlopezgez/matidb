@@ -93,11 +93,7 @@ impl<'a> SlottedPage<'a> {
         let data_start = self.free_space_pointer() as usize;
         let slots_end = self.slots_end();
 
-        if data_start > slots_end {
-            data_start - slots_end
-        } else {
-            0
-        }
+        data_start.saturating_sub(slots_end)
     }
 
     /// Add a tuple to the page
